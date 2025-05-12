@@ -19,7 +19,7 @@ class DataBaseConfig:
     """ Базовый класс для работы с БД. Использовать как родительский """
     
     def __init__(self):
-        self.DB_PATH: str = "database_storage/database.sql"
+        self.DB_PATH: str = "database_storage/database.db"
         self.status_connect: bool = False
         self.setup_connection()
         
