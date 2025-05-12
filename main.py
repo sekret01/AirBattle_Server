@@ -12,7 +12,7 @@ def get_command():
     ...
 
 
-def handle_client(client_socket: socket, address: any):
+def handle_client(client_socket: socket.socket, address: any):
     with client_socket as sock:
 
 
