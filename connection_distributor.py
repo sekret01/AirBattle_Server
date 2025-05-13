@@ -55,5 +55,7 @@ class NewConnectionDistributor:
         """ Остановить поток с функцией прослушивания подключений """
         if self.main_server_thread and self.main_server_thread.is_alive():
             self.server.stop_listen()
+            for client in self.client_list:
+                client.close()
 
         else: print(self.main_server_thread.is_alive())
