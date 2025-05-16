@@ -51,9 +51,9 @@ class DataBaseHub(DataBaseConfig):
         else:
             cursor.execute(f"""SELECT * FROM Statistic WHERE login = '{login}'""")
             acc_statistic = cursor.fetchall()[0]  # [('login', 0, 0, 0)]
-            _all_rounds = acc_statistic[0]
-            _win_rounds = acc_statistic[1]
-            _points = acc_statistic[2]
+            _all_rounds = acc_statistic[1]
+            _win_rounds = acc_statistic[2]
+            _points = acc_statistic[3]
 
             return {
                 'status': True,
