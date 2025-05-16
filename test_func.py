@@ -2,9 +2,13 @@ from database_storage import DataBaseHub
 from database_storage import DataBaseCreator
 from server import Server
 from connection_distributor import NewConnectionDistributor
+import os
 
+VERSION = "0.1.1"
 
 def test_server():
+    os.system('cls')
+    print(f"VERSION: {VERSION}\nCOMMANDS: \n  > start - start server listening\n  > stop - stop server listening\n  > exit - exit program\n{'=' * 40}\n")
     ncd = NewConnectionDistributor()
     while True:
         a = input('')
