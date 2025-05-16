@@ -101,6 +101,30 @@ class DataBaseHub(DataBaseConfig):
             return {'status': False, 'message': f'[UPDATE-STATISTIC] -- ERROR: {ex}'}
 
 
+    @DataBaseConfig.connection
+    def save_statistic(
+            self,
+            cursor: sqlite3.Cursor,
+            login: str,
+            all_rounds: int = 0,
+            win_rounds: int = 0,
+            points: int = 0
+    ) -> dict:
+        """ Обновление значений статистики игрока """
+
+        try:
+            cursor.execute(f"""
+            UPDATE Statistic
+            SET all_rounds = {all_rounds},
+            win_rounds = {win_rounds},
+            points = {points}
+            WHERE login = '{login}'
+            """)
+            return {'status': True, 'message': 'statistic was upgraded'}
+        except Exception as ex:
+            return {'status': False, 'message': f'[UPDATE-STATISTIC] -- ERROR: {ex}'}
+
+
 
 
         
