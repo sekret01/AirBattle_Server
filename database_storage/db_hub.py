@@ -120,11 +120,31 @@ class DataBaseHub(DataBaseConfig):
             points = {points}
             WHERE login = '{login}'
             """)
-            return {'status': True, 'message': 'statistic was upgraded'}
+            return {'status': True, 'message': 'statistic was save'}
         except Exception as ex:
-            return {'status': False, 'message': f'[UPDATE-STATISTIC] -- ERROR: {ex}'}
+            return {'status': False, 'message': f'[SAVE-STATISTIC] -- ERROR: {ex}'}
 
 
+    @DataBaseConfig.connection
+    def get_leaderboard(self, cursor: sqlite3.Cursor, login: str = ""):
+        try:
+            cursor.execute(f"""
+            SELECT *
+            FROM Statistic
+            ORDER BY points DESC
+            """)
+            board_data = cursor.fetchall()  # [(login, all_r, win_r, points), (login, all_r, win_r, points)]
+            res_list = []
+            for profile_data in board_data:
+                res_list.append({
+                    'login': profile_data[0],
+                    'all_rounds': profile_data[1],
+                    'win_rounds': profile_data[2],
+                    'points': profile_data[3],
+                })
+            return {'status': True, 'message': f'the data has been sent', 'data': res_list}  # list[dict]
+        except Exception as ex:
+            return {'status': False, 'message': f'[LEADERBOARD] -- ERROR: {ex}'}
 
 
         
