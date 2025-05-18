@@ -4,7 +4,7 @@ from server import Server
 from connection_distributor import NewConnectionDistributor
 import os
 
-VERSION = "0.1.1"
+VERSION = "0.1.2"
 
 def test_server():
     os.system('cls')

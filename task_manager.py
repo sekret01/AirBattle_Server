@@ -12,7 +12,8 @@ class Tasks:
         'logon': db_hub.logon_profile,
         'check_unique': db_hub.check_login_on_unique,
         'save_statistic': db_hub.save_statistic,
-        'update_statistic': db_hub.update_statistic
+        'update_statistic': db_hub.update_statistic,
+        'leaderboard': db_hub.get_leaderboard
     }
 
     @staticmethod
