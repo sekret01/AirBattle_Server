@@ -1,8 +1,8 @@
 import socket
+from configs import ConfigGetter
 
 
-HOST = "192.168.0.226"
-PORT = 9999
+HOST: tuple = ConfigGetter.get_host()
 BUFF = 4096
 
 
@@ -16,7 +16,7 @@ class Server:
 
     def setup_socket(self):
         self.server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        self.server.bind((HOST, PORT))
+        self.server.bind(HOST)
         self.closed = False
 
     def start_listen(self):
